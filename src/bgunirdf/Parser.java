@@ -5,35 +5,20 @@
  */
 package bgunirdf;
 
-import com.google.gdata.client.spreadsheet.*;
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.*;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.*;
 import domain.Building;
 import domain.Feature;
 import domain.Organisation;
 import domain.Site;
 import domain.Type;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.*;
-import java.net.URI;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import thewebsemantic.Bean2RDF;
 import util.AfterProcessor;
 import util.Connection;
 import util.Constants;
 import util.ModelUtil;
-import util.ObjectCreators;
 import util.Populators;
 
 /**

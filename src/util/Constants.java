@@ -23,7 +23,7 @@ public class Constants {
     public static final String SOUTHAMPTON_NS = "http://id.southampton.ac.uk/ns/";
     public static final String FOAF_NS = "http://xmlns.com/foaf/0.1/";
     
-    public static final String DOMAIN = "http://milan.rs";
-    public static final String PATH_FILE = "C:\\Users\\Milan\\Desktop\\BGRDF.txt";
-    public static final String PATH_TDB = "C:\\Users\\Milan\\Desktop\\BGRDF";
+    public static final String DOMAIN = "http://is.fon.rs/university";
+    public static final String PATH_FILE = "C:\\Users\\Milan\\git\\BGUNIRDF\\data.rdf";
+    public static final String PATH_TDB = "C:\\Users\\Milan\\git\\BGUNIRDF\\TDB";
 }

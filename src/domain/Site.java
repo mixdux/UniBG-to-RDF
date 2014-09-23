@@ -11,6 +11,7 @@ import java.util.Set;
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
+import thewebsemantic.Transient;
 import util.Constants;
 
 /**
@@ -21,7 +22,8 @@ import util.Constants;
 @RdfType("Site")
 public class Site extends Thing {
     
-    public String id;
+    @Transient
+    private String id;
     
     @RdfProperty(Constants.RDFS_NS+"label")
     private String name;
@@ -70,5 +72,12 @@ public class Site extends Thing {
     public void setContainedBuildings(Set<Building> containedBuildings) {
         this.containedBuildings = containedBuildings;
     }
-    
+ 
+    public String returnId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

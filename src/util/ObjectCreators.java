@@ -85,8 +85,8 @@ public class ObjectCreators {
         for (CellEntry cell : cellFeed.getEntries()) {
             switch (cell.getTitle().getPlainText().charAt(0)) {
                 case 'A':
-                    site.id = cell.getCell().getValue();
-                    site.setUri(new URI(Constants.DOMAIN + "/sites/" + site.id));
+                    site.setId(cell.getCell().getValue());
+                    site.setUri(new URI(Constants.DOMAIN + "/sites/" + site.returnId()));
                     break;
                 case 'B':
                     site.setName(cell.getCell().getValue());
@@ -134,8 +134,8 @@ public class ObjectCreators {
         for (CellEntry cell : cellFeed.getEntries()) {
             switch (cell.getTitle().getPlainText().charAt(0)) {
                 case 'A':
-                    feature.id = Integer.parseInt(cell.getCell().getValue());
-                    feature.setUri(new URI(Constants.DOMAIN + "/features/" + feature.id));
+                    feature.setId(Integer.parseInt(cell.getCell().getValue()));
+                    feature.setUri(new URI(Constants.DOMAIN + "/features/" + feature.getId()));
                     break;
                 case 'B':
                     feature.setName(cell.getCell().getValue());

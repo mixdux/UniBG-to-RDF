@@ -33,12 +33,12 @@ public class AfterProcessor {
     private void siteResolver(Building building, List<Site> sites) {
         for (Site site : sites) {
             if (building.getSites().size() == 1) {
-                if (site.id.equals(building.getSites().get(0).id)) {
+                if (site.returnId().equals(building.getSites().get(0).returnId())) {
                     site.getContainedBuildings().add(building);
                 }
             } else {
                 for (Site siteMany : building.getSites()) {
-                    if (site.id.equals(siteMany.id)) {
+                    if (site.returnId().equals(siteMany.returnId())) {
                         site.getContainedBuildings().add(building);
                     }
                 }

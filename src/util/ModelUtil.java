@@ -5,10 +5,8 @@
  */
 package util;
 
-import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import domain.Building;
-import domain.Feature;
 import domain.Organisation;
 import domain.Site;
 import domain.Type;

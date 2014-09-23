@@ -12,8 +12,6 @@ package domain;
  */
 public class Feature extends Thing{
     
-    public int id;
-    
     private String name;
 
     public Feature() {
