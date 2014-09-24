@@ -50,8 +50,9 @@ Here's a list of the ontologies used in the creation of the domain model:
 - org: http://www.w3.org/ns/org#
 - geo: http://www.w3.org/2003/01/geo/wgs84_pos#
 - xsd: http://www.w3.org/2001/XMLSchema#
-- southampton: http://id.southampton.ac.uk/ns/
 - foaf: http://xmlns.com/foaf/0.1/
+- southampton: http://id.southampton.ac.uk/ns/
+
 
 5. Setting-up in Your Environment
 =
