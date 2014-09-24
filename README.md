@@ -5,11 +5,11 @@ UniBG-to-RDF is a tool used to transform data about buildings of the University 
 
 1. About the Project
 =
-Project enables the University of Belgrade, Serbia to have a data source that contains precise geographical information about buildings is consists of. It creates an RDF repository that is populated with the necessary data, based on the similar work by the University of Southampton called [Buildings and Places](http://data.southampton.ac.uk/dataset/places.html). Alongside geographical information, data about each building has been included in the data repository in order to create an unified, free to use, publicly available, linked data source. Data about faculty buildings, student halls, restaurants and libraries have been captured, using some of the most common RDF ontologies available.
+Project enables the University of Belgrade, Serbia to have a data source that contains precise geographical information about buildings it consists of. It creates an RDF repository that is populated with the necessary data, based on the similar work by the University of Southampton called [Buildings and Places](http://data.southampton.ac.uk/dataset/places.html). Alongside geographical information, data about each building has been included in the data repository in order to create an unified, free to use, publicly available, linked data source. Data about faculty buildings, student halls, restaurants and libraries have been captured, using some of the most common RDF ontologies available.
 
 2. Domain Model
 =
-DOntologies used in Southampton's [Buildings and Places project](http://data.southampton.ac.uk/dataset/places.html) have been analysed and and classes and properties used for this project are only those for which the data could be obtained. Following domain model is created:
+Ontologies used in Southampton's [Buildings and Places project](http://data.southampton.ac.uk/dataset/places.html) have been analysed and and classes and properties used for this project are only those for which the data could be obtained. Following domain model is created:
 
 ![Domain model](https://dl.dropboxusercontent.com/u/29400255/Fax/BGUNIRDF.png)
 
