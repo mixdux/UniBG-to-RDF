@@ -118,7 +118,7 @@ public class ObjectCreators {
                     org.setName(cell.getCell().getValue());
                     break;
                 case 'C':
-                    org.setName(org.getName() + "," + cell.getCell().getValue());
+                    //org.setName(org.getName() + "," + cell.getCell().getValue());
                     allOrganisations.add(org);
                     org = new Organisation();
                     System.out.println("Organisation " + allOrganisations.size() + " -> " + (allOrganisations.get(allOrganisations.size() - 1)).getName());
@@ -142,7 +142,7 @@ public class ObjectCreators {
                     feature.setName(cell.getCell().getValue());
                     break;
                 case 'C':
-                    feature.setName(feature.getName() + "," + cell.getCell().getValue());
+                    //feature.setName(feature.getName() + "," + cell.getCell().getValue());
                     allFeatures.add(feature);
                     feature = new Feature();
                     System.out.println("Feature " + allFeatures.size() + " -> " + (allFeatures.get(allFeatures.size() - 1)).getName());
@@ -166,7 +166,7 @@ public class ObjectCreators {
                     type.setName(cell.getCell().getValue());
                     break;
                 case 'C':
-                    type.setName(type.getName() + "," + cell.getCell().getValue());
+                    //type.setName(type.getName() + "," + cell.getCell().getValue());
                     allTypes.add(type);
                     type = new Thing();
                     System.out.println("Type " + allTypes.size() + " -> " + (allTypes.get(allTypes.size() - 1)).getName());

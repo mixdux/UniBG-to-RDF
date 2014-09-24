@@ -11,7 +11,7 @@ package rs.fon.is.bgunirdf.util;
  */
 public class Constants {
 
-    public static final String SPREADSHEET_NAME = "Podaci za RDF bazu v2.0";
+    public static final String SPREADSHEET_NAME = "Univerzitet u Beogradu - Podaci za RDF bazu v2.0";
     public static final String SPREADSHEET_KEY = "1Vt64U_lFliaTGr0sz_dYkpL0XiuR5yKRKcD2FbsaG9o";
     public static final String SPREADSHEET_FEED = "https://spreadsheets.google.com/feeds/spreadsheets/private/full";
     public static final String CLIENT_ID = "609289403156-lp3hs497f4gtam72bmaql26mg09ou88l.apps.googleusercontent.com";
