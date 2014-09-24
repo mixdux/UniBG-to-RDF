@@ -52,7 +52,7 @@ Here's a list of the ontologies used in the creation of the domain model:
 - xsd: http://www.w3.org/2001/XMLSchema#
 - foaf: http://xmlns.com/foaf/0.1/
 - southampton: http://id.southampton.ac.uk/ns/
-5. Setting-up in Your Environment
+5. Running in Your Environment
 =
 If you would like to run the project on your device, several things should be taken into account:
 * Change Path-file and Path-TDB variables in util.Constants to reflect your file system
