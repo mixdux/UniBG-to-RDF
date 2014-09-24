@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package rs.fon.is.bgunirdf.logic;
 
 import com.google.gdata.data.spreadsheet.CellFeed;
 import com.google.gdata.data.spreadsheet.WorksheetEntry;
 import com.google.gdata.util.ServiceException;
-import domain.Building;
-import domain.Feature;
-import domain.Organisation;
-import domain.Site;
-import domain.Type;
+import rs.fon.is.bgunirdf.domain.Building;
+import rs.fon.is.bgunirdf.domain.Feature;
+import rs.fon.is.bgunirdf.domain.Organisation;
+import rs.fon.is.bgunirdf.domain.Site;
+import rs.fon.is.bgunirdf.domain.Thing;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import rs.fon.is.bgunirdf.util.Connection;
 
 /**
  *
@@ -54,8 +55,8 @@ public class Populators {
         return featureList;
     }
     
-    public static List<Type> typeListPopulator(List<WorksheetEntry> worksheets) {
-        List<Type> typeList = new ArrayList<Type>();
+    public static List<Thing> typeListPopulator(List<WorksheetEntry> worksheets) {
+        List<Thing> typeList = new ArrayList<Thing>();
         for (WorksheetEntry worksheet : worksheets) {
             if (worksheet.getTitle().getPlainText().equals("Types")) {
                 try {
@@ -136,7 +137,7 @@ public class Populators {
     }
     
     public static List<Building> buildingListPopulator(List<WorksheetEntry> worksheets,
-            List<Feature> features, List<Organisation> orgs, List<Type> types) {
+            List<Feature> features, List<Organisation> orgs, List<Thing> types) {
         List<Building> buildingList = new ArrayList<Building>();
         for (WorksheetEntry worksheet : worksheets) {
             if (worksheet.getTitle().getPlainText().equals("Buildings")) {

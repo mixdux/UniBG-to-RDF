@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package domain;
+package rs.fon.is.bgunirdf.domain;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import thewebsemantic.Transient;
-import util.Constants;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -24,9 +24,6 @@ public class Site extends Thing {
     
     @Transient
     private String id;
-    
-    @RdfProperty(Constants.RDFS_NS+"label")
-    private String name;
     
     @RdfProperty(Constants.DCTERMS_NS+"spatial")
     private String geoPolygon;
@@ -47,14 +44,6 @@ public class Site extends Thing {
     
     public Site(){
         containedBuildings = new HashSet<Building>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getGeoPolygon() {

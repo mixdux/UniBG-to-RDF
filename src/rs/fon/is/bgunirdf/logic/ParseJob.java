@@ -3,39 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bgunirdf;
+package rs.fon.is.bgunirdf.logic;
 
-import com.google.gdata.data.spreadsheet.*;
-import com.google.gdata.util.*;
+import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
+import com.google.gdata.data.spreadsheet.WorksheetEntry;
+import com.google.gdata.util.ServiceException;
 import com.hp.hpl.jena.rdf.model.Model;
-import domain.Building;
-import domain.Feature;
-import domain.Organisation;
-import domain.Site;
-import domain.Type;
 import java.io.IOException;
-import java.util.*;
-import util.AfterProcessor;
-import util.Connection;
-import util.Constants;
-import util.ModelUtil;
-import util.Populators;
+import java.util.ArrayList;
+import java.util.List;
+import rs.fon.is.bgunirdf.domain.Building;
+import rs.fon.is.bgunirdf.domain.Feature;
+import rs.fon.is.bgunirdf.domain.Organisation;
+import rs.fon.is.bgunirdf.domain.Site;
+import rs.fon.is.bgunirdf.domain.Thing;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
  * @author Milan
  */
-public class Parser {
+public class ParseJob {
 
-    public static void main(String[] args) {
-
-        SpreadsheetEntry spreadsheet = Connection.getTheSpreadsheet();
-        if (spreadsheet == null) {
-            return;
-        }
-
-        System.out.println(spreadsheet.getTitle().getPlainText());
-
+    public void parse(SpreadsheetEntry spreadsheet) {
         List<WorksheetEntry> worksheets = new ArrayList<WorksheetEntry>();
         try {
             worksheets = spreadsheet.getWorksheets();
@@ -47,7 +37,7 @@ public class Parser {
             System.out.println(ex.getMessage());
         }
 
-        List<Type> typeSpsh = Populators.typeListPopulator(worksheets);
+        List<Thing> typeSpsh = Populators.typeListPopulator(worksheets);
         List<Feature> featureSpsh = Populators.featureListPopulator(worksheets);
         List<Site> siteSpsh = Populators.siteListPopulator(worksheets);
         List<Organisation> organisationSpsh = Populators.organisationListPopulator(worksheets);
@@ -55,12 +45,9 @@ public class Parser {
 
         (new AfterProcessor()).afterProcessing(buildingsSpsh, siteSpsh);
 
-        //Model model = ModelUtil.createNewModel();
-        Model model = ModelUtil.getTDBModel();
-
-        ModelUtil.populateModel(model, typeSpsh, siteSpsh, organisationSpsh, buildingsSpsh);
-
-        ModelUtil.writeModelToFile(model, Constants.PATH_FILE);
-        
+        Model model = RDFPersistance.getInstance().getModel();
+        ModelUtil modelUtil = new ModelUtil();
+        modelUtil.populateModel(model, typeSpsh, siteSpsh, organisationSpsh, buildingsSpsh);
+        modelUtil.writeModelToFile(model, Constants.PATH_FILE);
     }
 }

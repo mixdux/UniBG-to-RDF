@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package rs.fon.is.bgunirdf.logic;
 
 import com.google.gdata.data.spreadsheet.CellEntry;
 import com.google.gdata.data.spreadsheet.CellFeed;
-import domain.Building;
-import domain.Feature;
-import domain.Organisation;
-import domain.Site;
-import domain.Type;
+import rs.fon.is.bgunirdf.domain.Building;
+import rs.fon.is.bgunirdf.domain.Feature;
+import rs.fon.is.bgunirdf.domain.Organisation;
+import rs.fon.is.bgunirdf.domain.Site;
+import rs.fon.is.bgunirdf.domain.Thing;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -24,7 +25,7 @@ import java.util.List;
 public class ObjectCreators {
 
     public static List<Building> buildingCreator(CellFeed cellFeed,
-            List<Feature> features, List<Organisation> orgs, List<Type> types) throws URISyntaxException {
+            List<Feature> features, List<Organisation> orgs, List<Thing> types) throws URISyntaxException {
         List<Building> allBuildings = new ArrayList<Building>();
         Building building = new Building();
         for (CellEntry cell : cellFeed.getEntries()) {
@@ -34,7 +35,7 @@ public class ObjectCreators {
                     building.setUri(new URI(Constants.DOMAIN + "/buildings/" + building.getId()));
                     break;
                 case 'B':
-                    building.setBuildingName(cell.getCell().getValue());
+                    building.setName(cell.getCell().getValue());
                     break;
                 case 'C':
                     building.setDate(cell.getCell().getValue());
@@ -49,10 +50,10 @@ public class ObjectCreators {
                     building.setWebpage(new URI(cell.getCell().getValue()));
                     break;
                 case 'G':
-                    building.setLongitude(cell.getCell().getValue());
+                    building.setLongitude(Float.parseFloat(cell.getCell().getValue()));
                     break;
                 case 'H':
-                    building.setLatitude(cell.getCell().getValue());
+                    building.setLatitude(Float.parseFloat(cell.getCell().getValue()));
                     break;
                 case 'I':
                     building.setGeoPolygon("POLYGON((" + cell.getCell().getValue() + "))");
@@ -71,7 +72,7 @@ public class ObjectCreators {
                     //building.setSite(new ArrayList<Site>(){{ add(new Site(cellFinal.getCell().getValue())); }});
                     allBuildings.add(building);
                     building = new Building();
-                    System.out.println("Zgrada " + allBuildings.size() + " -> " + (allBuildings.get(allBuildings.size() - 1).getBuildingName()));
+                    System.out.println("Building " + allBuildings.size() + " -> " + (allBuildings.get(allBuildings.size() - 1).getName()));
                     break;
             }
         }
@@ -96,7 +97,7 @@ public class ObjectCreators {
                     //site.setUri(new URI("www.primenet/sites/"+site.id));
                     allSites.add(site);
                     site = new Site();
-                    System.out.println("Oblast " + allSites.size() + " -> " + (allSites.get(allSites.size() - 1)).getName());
+                    System.out.println("Site " + allSites.size() + " -> " + (allSites.get(allSites.size() - 1)).getName());
                     break;
             }
         }
@@ -120,7 +121,7 @@ public class ObjectCreators {
                     org.setName(org.getName() + "," + cell.getCell().getValue());
                     allOrganisations.add(org);
                     org = new Organisation();
-                    System.out.println("Organizacija " + allOrganisations.size() + " -> " + (allOrganisations.get(allOrganisations.size() - 1)).getName());
+                    System.out.println("Organisation " + allOrganisations.size() + " -> " + (allOrganisations.get(allOrganisations.size() - 1)).getName());
                     break;
             }
         }
@@ -144,7 +145,7 @@ public class ObjectCreators {
                     feature.setName(feature.getName() + "," + cell.getCell().getValue());
                     allFeatures.add(feature);
                     feature = new Feature();
-                    System.out.println("Dodatno " + allFeatures.size() + " -> " + (allFeatures.get(allFeatures.size() - 1)).getName());
+                    System.out.println("Feature " + allFeatures.size() + " -> " + (allFeatures.get(allFeatures.size() - 1)).getName());
                     break;
             }
         }
@@ -152,9 +153,9 @@ public class ObjectCreators {
         return allFeatures;
     }
 
-    public static List<Type> typeCreator(CellFeed cellFeed) throws URISyntaxException {
-        List<Type> allTypes = new ArrayList<Type>();
-        Type type = new Type();
+    public static List<Thing> typeCreator(CellFeed cellFeed) throws URISyntaxException {
+        List<Thing> allTypes = new ArrayList<Thing>();
+        Thing type = new Thing();
         for (CellEntry cell : cellFeed.getEntries()) {
             switch (cell.getTitle().getPlainText().charAt(0)) {
                 case 'A':
@@ -167,8 +168,8 @@ public class ObjectCreators {
                 case 'C':
                     type.setName(type.getName() + "," + cell.getCell().getValue());
                     allTypes.add(type);
-                    type = new Type();
-                    System.out.println("Tip " + allTypes.size() + " -> " + (allTypes.get(allTypes.size() - 1)).getName());
+                    type = new Thing();
+                    System.out.println("Type " + allTypes.size() + " -> " + (allTypes.get(allTypes.size() - 1)).getName());
                     break;
             }
         }

@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
-package domain;
+package rs.fon.is.bgunirdf.domain;
 
 import java.net.URI;
 import thewebsemantic.Id;
 import thewebsemantic.Namespace;
+import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import thewebsemantic.Transient;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -23,6 +25,9 @@ public class Thing {
     
     @Id
     private URI uri;
+    
+    @RdfProperty(Constants.RDFS_NS+"label")
+    protected String name;
 
     public URI getUri() {
         return uri;
@@ -30,6 +35,14 @@ public class Thing {
 
     public void setUri(URI uri) {
         this.uri = uri;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
     @Transient

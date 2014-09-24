@@ -3,14 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package rs.fon.is.bgunirdf.logic;
 
-import domain.Building;
-import domain.Feature;
-import domain.Organisation;
-import domain.Site;
-import domain.Type;
-import java.util.ArrayList;
+import rs.fon.is.bgunirdf.domain.Building;
+import rs.fon.is.bgunirdf.domain.Site;
 import java.util.List;
 
 /**
@@ -24,7 +20,7 @@ public class AfterProcessor {
             siteResolver(building, sites);
         }
         for (Site site : sites) {
-            if (site.getContainedBuildings().size() == 0) {
+            if (site.getContainedBuildings().isEmpty()) {
                 System.out.println("EMPTY! " + site.getName());
             }
         }

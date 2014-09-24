@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package domain;
+package rs.fon.is.bgunirdf.domain;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import thewebsemantic.Transient;
-import util.Constants;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -23,9 +23,6 @@ import util.Constants;
 @Namespace(Constants.ROOMS_NS)
 @RdfType("Building")
 public class Building extends Thing{
-    
-    @RdfProperty(Constants.RDFS_NS+"label")
-    private String buildingName;
     
     @RdfProperty(Constants.SOUTHAMPTON_NS+"buildingDate")
     private String date;
@@ -40,10 +37,10 @@ public class Building extends Thing{
     private URI webpage;
     
     @RdfProperty(Constants.GEO_NS+"long")
-    private String longitude;
+    private float longitude;
     
     @RdfProperty(Constants.GEO_NS+"lat")
-    private String latitude;
+    private float latitude;
     
     @RdfProperty(Constants.DCTERMS_NS+"spatial")
     private String geoPolygon;
@@ -52,7 +49,7 @@ public class Building extends Thing{
     private Organisation organisation;
     
     @RdfProperty(Constants.DCTERMS_NS+"subject")
-    private Type type;
+    private Thing type;
     
     @Transient
     private List<Site> site;
@@ -63,28 +60,6 @@ public class Building extends Thing{
 
     public Building(int id){
         this.id = id;
-    }
-    
-    public Building(String buildingName, String date, String description, String features, URI webpage, String longitude, String latitude, String geoPolygon, Organisation organisation, Type type, List<Site> site) {
-        this.buildingName = buildingName;
-        this.date = date;
-        this.description = description;
-        this.features = features;
-        this.webpage = webpage;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.geoPolygon = "POLYGON(("+geoPolygon+"))";
-        this.organisation = organisation;
-        this.type = type;
-        this.site = site;
-    }
-    
-    public String getBuildingName() {
-        return buildingName;
-    }
-
-    public void setBuildingName(String buildingName) {
-        this.buildingName = buildingName;
     }
 
     public String getDate() {
@@ -119,19 +94,19 @@ public class Building extends Thing{
         this.webpage = webpage;
     }
 
-    public String getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
@@ -151,11 +126,11 @@ public class Building extends Thing{
         this.organisation = organisation;
     }
 
-    public Type getType() {
+    public Thing getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(Thing type) {
         this.type = type;
     }
 

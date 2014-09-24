@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package rs.fon.is.bgunirdf.logic;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import domain.Building;
-import domain.Organisation;
-import domain.Site;
-import domain.Type;
+import rs.fon.is.bgunirdf.domain.Building;
+import rs.fon.is.bgunirdf.domain.Organisation;
+import rs.fon.is.bgunirdf.domain.Site;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import thewebsemantic.Bean2RDF;
-import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.tdb.TDBFactory;
+import rs.fon.is.bgunirdf.domain.Thing;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -41,7 +40,7 @@ public class ModelUtil {
         return model;
     }
 
-    public static void populateModel(Model model, List<Type> typeList,
+    public void populateModel(Model model, List<Thing> typeList,
             List<Site> siteList, List<Organisation> organisationList,
             List<Building> buildingsList) {
         Bean2RDF writer = new Bean2RDF(model);
@@ -49,17 +48,17 @@ public class ModelUtil {
             writer.save(typeList.get(i));
         }
         for (int i = 0; i < organisationList.size(); i++) {
-            writer.saveDeep(organisationList.get(i));
+            writer.save(organisationList.get(i));
         }
         for (int i = 0; i < buildingsList.size(); i++) {
-            writer.saveDeep(buildingsList.get(i));
+            writer.save(buildingsList.get(i));
         }
         for (int i = 0; i < siteList.size(); i++) {
-            writer.saveDeep(siteList.get(i));
+            writer.save(siteList.get(i));
         }
     }
 
-    public static void writeModelToFile(Model model, String filepath) {
+    public void writeModelToFile(Model model, String filepath) {
         try {
             model.write(new BufferedWriter(new FileWriter(new File(filepath))), "TURTLE");
         } catch (IOException ex) {
@@ -68,9 +67,17 @@ public class ModelUtil {
         }
     }
     
-    public static Model getTDBModel(){
-        Dataset dataset = TDBFactory.createDataset(Constants.PATH_TDB);
-        return dataset.getDefaultModel();
+    public static void setNsPrefixes(Model model){
+        model.setNsPrefix("rooms", Constants.ROOMS_NS);
+        model.setNsPrefix("foaf", Constants.FOAF_NS);
+        model.setNsPrefix("rdf", Constants.RDF_NS);
+        model.setNsPrefix("rdfs", Constants.RDFS_NS);
+        model.setNsPrefix("dcterms", Constants.DCTERMS_NS);
+        model.setNsPrefix("oo", Constants.OO_NS);
+        model.setNsPrefix("org", Constants.ORG_NS);
+        model.setNsPrefix("geo", Constants.GEO_NS);
+        model.setNsPrefix("xsd", Constants.XSD_NS);
+        model.setNsPrefix("southampton", Constants.SOUTHAMPTON_NS);
     }
 
 }

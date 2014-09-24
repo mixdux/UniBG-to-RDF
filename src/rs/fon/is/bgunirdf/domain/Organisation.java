@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package domain;
+package rs.fon.is.bgunirdf.domain;
 
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
-import util.Constants;
+import rs.fon.is.bgunirdf.util.Constants;
 
 /**
  *
@@ -18,9 +18,6 @@ import util.Constants;
 @Namespace(Constants.ORG_NS)
 @RdfType("FormalOrganization")
 public class Organisation extends Thing{
-    
-    @RdfProperty(Constants.RDFS_NS+"label")
-    private String name;
 
     public Organisation() {
     }
@@ -30,19 +27,11 @@ public class Organisation extends Thing{
     }
     
     public Organisation(String nameEn) {
-        this.name = nameEn;
+        name = nameEn;
     }
     
     public Organisation(String nameEn, String nameRS) {
-        this.name = nameEn+","+nameRS;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        name = nameEn+","+nameRS;
     }
     
 }
